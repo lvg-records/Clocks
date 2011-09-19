@@ -21,18 +21,19 @@
     <optimize>true</optimize>
     <omit-trace-statements>true</omit-trace-statements>
     <source-path append="true">
-      <path-element>D:\My work space\GIT_REPOSITORY\Clocks\Clock_iPhoneProject\src</path-element>
+      <path-element>D:\My work space\GIT_REPOSITORY\Clocks\Clock_on_five_point_with_finger\src</path-element>
       <path-element>C:\Program Files\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
     <library-path append="true">
-      <path-element>D:\My work space\GIT_REPOSITORY\Clocks\Clock_iPhoneProject\lib\res.swc</path-element>
+      <path-element>D:\My work space\GIT_REPOSITORY\Clocks\Clock_on_five_point_with_finger\lib\res.swc</path-element>
+      <path-element>D:\My work space\GIT_REPOSITORY\Clocks\Clock_on_five_point_with_finger\lib\tweener.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>
-    <path-element>D:\My work space\GIT_REPOSITORY\Clocks\Clock_iPhoneProject\src\ArcClock_v2.as</path-element>
+    <path-element>D:\My work space\GIT_REPOSITORY\Clocks\Clock_on_five_point_with_finger\src\ClockOnFivePoint.as</path-element>
   </file-specs>
-  <default-background-color>#F2F2F2</default-background-color>
-  <default-frame-rate>50</default-frame-rate>
+  <default-background-color>#FFFFFF</default-background-color>
+  <default-frame-rate>30</default-frame-rate>
   <default-size>
     <width>600</width>
     <height>600</height>
