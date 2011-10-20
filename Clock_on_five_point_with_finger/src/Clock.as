@@ -18,6 +18,8 @@ package
 		public static var   CLOCK_SPEED			:int = 1;
 		
 		public static var arrClockElementsMask	:Vector.<mcClockElement> = new Vector.<mcClockElement>();
+		public static var arrClockElementsPositions	:Array = [];
+		public static var arrClockElementsPositions2	:Array = [];
 		public static var tips					:mcTips;
 		
 		public static var t					:Timer;
@@ -36,14 +38,17 @@ package
 				spriteElements.addChild(mc);
 				mc.rotation = i * 72 + 72;
 				mc.bbb.rotation =  - (i * 72 + 72);
+				mc.bbb2.rotation =  - (i * 72 + 72);
 				mc.y = -5;
 				arrClockElementsMask.push(mc);
+				arrClockElementsPositions.push({x:mc.bbb.x,y:mc.bbb.y});
+				arrClockElementsPositions2.push({x:mc.bbb2.x,y:mc.bbb2.y});
 			}
 			finger = new Finger();
 			spriteElements.addChild(finger);
 			finger.scaleX = finger.scaleY = 1.3;
-			finger.fing.alpha = 0.25;
-			finger.alpha = 0.3;
+			finger.fing.alpha = 0.3;
+			finger.alpha = 0.4;
 			
 			finger.gotoAndStop(11);
 			
