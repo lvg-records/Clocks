@@ -1,5 +1,4 @@
-package  
-{
+package {
 	import clockPart.ArrowHours;
 	import clockPart.ArrowMinutes;
 	import clockPart.ArrowSeconds;
@@ -10,22 +9,19 @@ package
 	import flash.events.Event;
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
+	
 	/**
 	 * ...
 	 * @author LVG
 	 */
-	public class Clock extends Sprite
-	{
-		public static const CLOCK_MODE_REAL		:int = 0;
-		public static const CLOCK_MODE_PREVIEW	:int = 1;
+	public class Clock extends Sprite {
 		
-<<<<<<< HEAD
-		public static const PREVIEW_SPEED		:int = 3;
-=======
-		public static const PREVIEW_SPEED		:int = 2;
->>>>>>> 7594b37ad251031537a818518204ba78b4753b0c
+		public static const CLOCK_MODE_REAL:int = 0;
+		public static const CLOCK_MODE_PREVIEW:int = 1;
 		
-		public static const CLOCK_DELTA_X:int = 300;
+		public static const PREVIEW_SPEED:int = 2;
+		
+		public static const CLOCK_DELTA_X:int = 250;
 		public static const CLOCK_DELTA_Y:int = 300;
 		
 		private var time:Timer;
@@ -36,29 +32,25 @@ package
 		private var center:MovieClip;
 		private var grid:Grid;
 		
-<<<<<<< HEAD
 		private var txtTime:TXT_time;
 		
-=======
->>>>>>> 7594b37ad251031537a818518204ba78b4753b0c
 		private var previewData:Array = [0, 0, 0];
 		
 		private var mode:int = 0;
+		private var clock_mode:int = 0;
 		
-		public function Clock() 
-		{
-			addEventListener(Event.ADDED_TO_STAGE,onAdded);
+		public function Clock(clock_mode:int = 0){
+			this.clock_mode = clock_mode;
+			addEventListener(Event.ADDED_TO_STAGE, onAdded);
 		}
 		
-		private function onAdded(e:Event):void 
-		{
+		private function onAdded(e:Event):void {
 			removeEventListener(Event.ADDED_TO_STAGE, onAdded);
 			
 			init();
 		}
 		
-		private function init():void 
-		{
+		private function init():void {
 			x = CLOCK_DELTA_X;
 			y = CLOCK_DELTA_Y;
 			
@@ -81,113 +73,82 @@ package
 			
 			Cheats.initializeCheats(this);
 			
-<<<<<<< HEAD
 			var chBox:CheckBox = new CheckBox();
+			chBox.visible = false;
 			chBox.label = "Preview";
 			addChild(chBox);
-			chBox.y = - 170;
+			chBox.y = -170;
 			chBox.addEventListener(ComponentEvent.BUTTON_DOWN, onBtnDown);
-			function onBtnDown(e:ComponentEvent):void 
-			{
+			function onBtnDown(e:ComponentEvent):void {
 				changeClockMode(int(!chBox.selected));
 			}
 			
-			changeClockMode(CLOCK_MODE_REAL);
+			changeClockMode(clock_mode);
 		}
 		
-		
-		
-=======
-			
-			changeClockMode(CLOCK_MODE_PREVIEW);
-		}
-		
->>>>>>> 7594b37ad251031537a818518204ba78b4753b0c
-		private function changeClockMode(_mode:int = 0):void 
-		{
+		private function changeClockMode(_mode:int = 0):void {
 			mode = _mode;
-			if (time)
-			{
-				time.removeEventListener(TimerEvent.TIMER,onTime);
+			if (time){
+				time.removeEventListener(TimerEvent.TIMER, onTime);
 				time.stop();
 				time = null;
 			}
-<<<<<<< HEAD
 			if (hasEventListener(Event.ENTER_FRAME))
 				removeEventListener(Event.ENTER_FRAME, onEnterFrame);
-=======
->>>>>>> 7594b37ad251031537a818518204ba78b4753b0c
 			
-			
-			switch (_mode)
-			{
-				case CLOCK_MODE_REAL:
+			switch (_mode){
+				case CLOCK_MODE_REAL: 
 					time = new Timer(1000);
-					time.addEventListener(TimerEvent.TIMER,onTime);
+					time.addEventListener(TimerEvent.TIMER, onTime);
 					time.start();
 					onTime();
-				break;
-				case CLOCK_MODE_PREVIEW:
-<<<<<<< HEAD
+					break;
+				case CLOCK_MODE_PREVIEW: 
 					addEventListener(Event.ENTER_FRAME, onEnterFrame);
-=======
-					addEventListener(Event.ENTER_FRAME, onEnterFrame)
->>>>>>> 7594b37ad251031537a818518204ba78b4753b0c
-				break;
+					break;
 			}
 		}
 		
-		private function onEnterFrame(e:Event):void 
-		{
-			previewData[2]+=PREVIEW_SPEED;
-			if (previewData[2] >= 60)
-			{
+		private function onEnterFrame(e:Event):void {
+			previewData[2] += PREVIEW_SPEED;
+			if (previewData[2] >= 60){
 				previewData[1]++;
 				previewData[2] = 0;
 			}
-			if (previewData[1] >= 60)
-			{
+			if (previewData[1] >= 60){
 				previewData[0]++;
 				previewData[1] = 0;
 			}
-			if (previewData[0] >= 24)
-			{
+			if (previewData[0] >= 24){
 				previewData[0] = 0
 			}
-<<<<<<< HEAD
 			
-			moveClockArrows(previewData[0],previewData[1],previewData[2]);
-=======
+			moveClockArrows(previewData[0], previewData[1], previewData[2]);
 			arrow_seconds.updatePosition(previewData[2]);
 			arrow_minutes.updatePosition(previewData[1]);
 			arrow_hourds.updatePosition(previewData[0]);
->>>>>>> 7594b37ad251031537a818518204ba78b4753b0c
 		}
 		
-		private function onTime(e:TimerEvent = null):void 
-		{
+		private function onTime(e:TimerEvent = null):void {
 			var date:Date = new Date();
 			
 			moveClockArrows(date.hours, date.minutes, date.seconds);
 		}
 		
-		private function moveClockArrows(hours:int, minutes:int, seconds:int):void
-		{
-			updateTxtField(hours,minutes,seconds);
+		private function moveClockArrows(hours:int, minutes:int, seconds:int):void {
+			updateTxtField(hours, minutes, seconds);
 			arrow_hourds.updatePosition(hours);
 			arrow_minutes.updatePosition(minutes);
 			arrow_seconds.updatePosition(seconds);
 		}
 		
-		private function updateTxtField(hours:int, minutes:int, seconds:int):void
-		{
+		private function updateTxtField(hours:int, minutes:int, seconds:int):void {
 			//txtTime.txt.text = normalizeTxt(hours) + ":" + normalizeTxt(minutes) + ":" + normalizeTxt(seconds);
 			txtTime.txt.text = normalizeTxt(hours) + ":" + normalizeTxt(minutes);
 		}
 		
-		private function normalizeTxt(s:int):String
-		{
-			return (s < 10)?("0" + s):String(s);
+		private function normalizeTxt(s:int):String {
+			return (s < 10) ? ("0" + s) : String(s);
 		}
 	}
 }

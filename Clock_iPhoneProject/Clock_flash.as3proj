@@ -6,7 +6,7 @@
     <movie input="" />
     <movie path="bin\ArcClock_v2.swf" />
     <movie fps="50" />
-    <movie width="600" />
+    <movie width="1200" />
     <movie height="600" />
     <movie version="10" />
     <movie minorVersion="1" />

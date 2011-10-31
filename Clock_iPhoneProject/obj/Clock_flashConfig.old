@@ -8,18 +8,17 @@
   <compiler>
     <define append="true">
       <name>CONFIG::debug</name>
-      <value>false</value>
-    </define>
-    <define append="true">
-      <name>CONFIG::release</name>
       <value>true</value>
     </define>
     <define append="true">
-      <name>CONFIG::timeStamp</name>
-      <value>'19.09.2011'</value>
+      <name>CONFIG::release</name>
+      <value>false</value>
     </define>
-    <optimize>true</optimize>
-    <omit-trace-statements>true</omit-trace-statements>
+    <define append="true">
+      <name>CONFIG::timeStamp</name>
+      <value>'01.11.2011'</value>
+    </define>
+    <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
       <path-element>D:\My work space\GIT_REPOSITORY\Clocks\Clock_iPhoneProject\src</path-element>
       <path-element>C:\Program Files\FlashDevelop\Library\AS3\classes</path-element>
@@ -34,7 +33,7 @@
   <default-background-color>#F2F2F2</default-background-color>
   <default-frame-rate>50</default-frame-rate>
   <default-size>
-    <width>600</width>
+    <width>1200</width>
     <height>600</height>
   </default-size>
 </flex-config>
