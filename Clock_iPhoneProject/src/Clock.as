@@ -19,7 +19,11 @@ package
 		public static const CLOCK_MODE_REAL		:int = 0;
 		public static const CLOCK_MODE_PREVIEW	:int = 1;
 		
+<<<<<<< HEAD
 		public static const PREVIEW_SPEED		:int = 3;
+=======
+		public static const PREVIEW_SPEED		:int = 2;
+>>>>>>> 7594b37ad251031537a818518204ba78b4753b0c
 		
 		public static const CLOCK_DELTA_X:int = 300;
 		public static const CLOCK_DELTA_Y:int = 300;
@@ -32,8 +36,11 @@ package
 		private var center:MovieClip;
 		private var grid:Grid;
 		
+<<<<<<< HEAD
 		private var txtTime:TXT_time;
 		
+=======
+>>>>>>> 7594b37ad251031537a818518204ba78b4753b0c
 		private var previewData:Array = [0, 0, 0];
 		
 		private var mode:int = 0;
@@ -74,6 +81,7 @@ package
 			
 			Cheats.initializeCheats(this);
 			
+<<<<<<< HEAD
 			var chBox:CheckBox = new CheckBox();
 			chBox.label = "Preview";
 			addChild(chBox);
@@ -89,6 +97,12 @@ package
 		
 		
 		
+=======
+			
+			changeClockMode(CLOCK_MODE_PREVIEW);
+		}
+		
+>>>>>>> 7594b37ad251031537a818518204ba78b4753b0c
 		private function changeClockMode(_mode:int = 0):void 
 		{
 			mode = _mode;
@@ -98,8 +112,11 @@ package
 				time.stop();
 				time = null;
 			}
+<<<<<<< HEAD
 			if (hasEventListener(Event.ENTER_FRAME))
 				removeEventListener(Event.ENTER_FRAME, onEnterFrame);
+=======
+>>>>>>> 7594b37ad251031537a818518204ba78b4753b0c
 			
 			
 			switch (_mode)
@@ -111,7 +128,11 @@ package
 					onTime();
 				break;
 				case CLOCK_MODE_PREVIEW:
+<<<<<<< HEAD
 					addEventListener(Event.ENTER_FRAME, onEnterFrame);
+=======
+					addEventListener(Event.ENTER_FRAME, onEnterFrame)
+>>>>>>> 7594b37ad251031537a818518204ba78b4753b0c
 				break;
 			}
 		}
@@ -133,8 +154,14 @@ package
 			{
 				previewData[0] = 0
 			}
+<<<<<<< HEAD
 			
 			moveClockArrows(previewData[0],previewData[1],previewData[2]);
+=======
+			arrow_seconds.updatePosition(previewData[2]);
+			arrow_minutes.updatePosition(previewData[1]);
+			arrow_hourds.updatePosition(previewData[0]);
+>>>>>>> 7594b37ad251031537a818518204ba78b4753b0c
 		}
 		
 		private function onTime(e:TimerEvent = null):void 

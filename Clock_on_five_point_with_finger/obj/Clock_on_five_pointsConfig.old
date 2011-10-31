@@ -16,19 +16,20 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'19.09.2011'</value>
+      <value>'10/20/2011'</value>
     </define>
+    <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
-      <path-element>D:\My work space\GIT_REPOSITORY\Clocks\Clock_on_five_point_with_finger\src</path-element>
-      <path-element>C:\Program Files\FlashDevelop\Library\AS3\classes</path-element>
+      <path-element>E:\GIT_Repository\Clocks\Clock_on_five_point_with_finger\src</path-element>
+      <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
     <library-path append="true">
-      <path-element>D:\My work space\GIT_REPOSITORY\Clocks\Clock_on_five_point_with_finger\lib\res.swc</path-element>
-      <path-element>D:\My work space\GIT_REPOSITORY\Clocks\Clock_on_five_point_with_finger\lib\tweener.swc</path-element>
+      <path-element>E:\GIT_Repository\Clocks\Clock_on_five_point_with_finger\lib\res.swc</path-element>
+      <path-element>E:\GIT_Repository\Clocks\Clock_on_five_point_with_finger\lib\tweener.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>
-    <path-element>D:\My work space\GIT_REPOSITORY\Clocks\Clock_on_five_point_with_finger\src\ClockOnFivePoint.as</path-element>
+    <path-element>E:\GIT_Repository\Clocks\Clock_on_five_point_with_finger\src\ClockOnFivePoint.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>
