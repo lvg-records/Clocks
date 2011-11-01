@@ -8,9 +8,12 @@ package {
 	 * @author LVG
 	 */
 	public class ClockTable {
-		static private var clock:Clock;
+		//static 
+		private var clock:Clock;
 		public static var TYPE_1_TO_0:String
 		public static var TYPE_0_TO_1:String
+		
+		public static const PREVIEW_SPEED:int = 4;
 		
 		public static const MODE_HOURS:int = 0;
 		public static const MODE_DEC_MINUTES:int = 1;
@@ -21,20 +24,44 @@ package {
 		
 		public static var arrWithEl:Array;
 		
-		public static function lightClock(arr:Vector.<DisplayObject>, mode:int, updateTxtField:Function, clock:Clock):void {
-			ClockTable.clock = clock;
-			//var date:Date = new Date();
-			var date:Date = new Date(null,null,null,11,33);
-			updateTxtField(date.hours, date.minutes, date.seconds);
+		private var previewData:Array = [0,0,0];
+		
+		public function ClockTable(clock:Clock){
+			this.clock = clock;
+		}
+		
+		public function lightClock(arr:Vector.<mc_romb>, mode:int, updateTxtField:Function, clock_mode:int = 0):void {
+			//ClockTable.clock = clock;
+			if (clock_mode == 0){
+				var date:Date = new Date();
+				previewData[0] = date.hours;
+				previewData[1] = date.minutes;
+				previewData[2] = date.seconds;
+			}
+			else {
+				previewData[2] += PREVIEW_SPEED;
+				if (previewData[2] >= 60){
+					previewData[1]++;
+					previewData[2] = 0;
+				}
+				if (previewData[1] >= 60){
+					previewData[0]++;
+					previewData[1] = 0;
+				}
+				if (previewData[0] >= 24){
+					previewData[0] = 0
+				}
+			}
+			updateTxtField(previewData[0], previewData[1], previewData[2]);
 			switch (mode){
 				case MODE_HOURS: 
-					calculateHours(arr, date.hours);
+					calculateHours(arr, previewData[0]);
 					break;
 				case MODE_DEC_MINUTES: 
-					calculateDecMinutes(arr, date.minutes / 10);
+					calculateDecMinutes(arr, previewData[1] / 10);
 					break;
 				case MODE_ONE_MINUTES: 
-					calculateOneMinutes(arr, date.minutes % 10);
+					calculateOneMinutes(arr, previewData[1] % 10);
 					break;
 				default: 
 					showDefineSector(arr);
@@ -42,7 +69,7 @@ package {
 			}
 		}
 		
-		static private function calculateOneMinutes(arr:Vector.<DisplayObject>, oneMin:int):void {
+		private function calculateOneMinutes(arr:Vector.<mc_romb>, oneMin:int):void {
 			switch (oneMin){
 				case 0: 
 					showDefineSector(arr, 0, 4);
@@ -77,8 +104,7 @@ package {
 			}
 		}
 		
-		static private function calculateDecMinutes(arr:Vector.<DisplayObject>, decMin:int):void {
-			Clock.isIndicatorActive = false;
+		private function calculateDecMinutes(arr:Vector.<mc_romb>, decMin:int):void {
 			switch (decMin){
 				case 0: 
 					showDefineSector(arr, 0, 4);
@@ -104,11 +130,7 @@ package {
 			}
 		}
 		
-		static private function calculateHours(arr:Vector.<DisplayObject>, hours:int):void {
-			if (hours == 10 || hours == 11 || hours == 12 || hours == 22 || hours == 23 || hours == 24)
-				Clock.isIndicatorActive = true;
-			else
-				Clock.isIndicatorActive = false;
+		private function calculateHours(arr:Vector.<mc_romb>, hours:int):void {
 			switch (hours){
 				case 0: 
 				case 12: 
@@ -160,7 +182,7 @@ package {
 			}
 		}
 		
-		static private function showDefineSector(arr:Vector.<DisplayObject>, element_1:int = -1, element_2:int = -1):void {
+		private function showDefineSector(arr:Vector.<mc_romb>, element_1:int = -1, element_2:int = -1):void {
 			arrWithEl = new Array();
 			for (var i:int = 0; i < arr.length; i++){
 				if (i == element_1 || i == element_2){
@@ -169,13 +191,13 @@ package {
 					arr[i].visible = true;
 					arr[i].alpha = 0;
 					Tweener.addTween(arr[i], {alpha: 1, time: clock.t.delay / 2010, onComplete: backTween, transition: ClockTable.TYPE_1_TO_0});
-					(Clock.tips['t_' + i] as TLFTextField).textColor = COLOR_TXT_ACTIVE_ELEMENT;
+					(clock.tips['t_' + i] as TLFTextField).textColor = COLOR_TXT_ACTIVE_ELEMENT;
 				} else {
 					arr[i].visible = false;
-					(Clock.tips['t_' + i] as TLFTextField).textColor = COLOR_TXT_PACTIVE_ELEMENT;
+					(clock.tips['t_' + i] as TLFTextField).textColor = COLOR_TXT_PACTIVE_ELEMENT;
 				}
 			}
-			(Clock.tips['t_' + i] as TLFTextField).visible = false;
+			(clock.tips['t_' + i] as TLFTextField).visible = false;
 			
 			function backTween():void {
 				for (var g:int = 0; g < arrWithEl.length; g++){

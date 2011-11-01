@@ -167,7 +167,7 @@ package {
 					image.graphics.beginFill(uint('0x' + txtElementColor.text));
 					image.graphics.drawRect(-Clock.DELTA, -Clock.DELTA, Clock.DELTA * 2, Clock.DELTA * 2);
 					image.graphics.endFill();
-					image.mask = _clock.arrClockElementsMask[i];
+					//image.mask = _clock.arrClockElementsMask[i];
 				}
 			}
 		}
@@ -182,8 +182,6 @@ package {
 			_content.graphics.beginFill(uint('0x' + txtBkColor.text));
 			_content.graphics.drawRect(-Clock.DELTA * 2, -Clock.DELTA * 2, Clock.DELTA * 4, Clock.DELTA * 4);
 			_content.graphics.endFill();
-		}
-	
+		}	
 	}
-
 }
