@@ -75,14 +75,24 @@ package {
 		
 		public function onTime(time_hours:Number, time_minutes:Number, time_seconds:Number, mode:Boolean):void {
 			trace(arguments);
+			
+			time_hours = 15;
+			time_minutes = 34;
+			
 			var _sector:int = mode ? (time_minutes / 5) : time_hours % 12;
 			var speed:Number = mode ? (int(time_minutes % 5) * 60 + time_seconds) : -1;
 			
-			if (speed == -1)
-				changeOnTime(time_hours % 12);
+			var less:Boolean = (int(time_minutes % 5) > 2);
+			var index_1:int = (time_minutes / 5) + (less? 1:0) //time_minutes / 5;
+			var index_2:int = index_1+(less? -1 :+1);
+			
+			changeOnTime(index_1, index_2, speed);
+			
+			//if (speed == -1)
+				//changeOnTime(time_hours % 12);
 			//changeOnTime(_sector, 1, speed);
-			//return;
-			else
+			return;
+			//else
 				switch (_sector){
 				case 0: 
 					changeOnTime(0, 5, speed);

@@ -16,7 +16,7 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'01.11.2011'</value>
+      <value>'02.11.2011'</value>
     </define>
     <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
@@ -33,7 +33,7 @@
     <path-element>D:\My work space\GIT_REPOSITORY\Clocks\Clock_on_12_stars\src\ClockOnTwelveStars.as</path-element>
   </file-specs>
   <default-background-color>#0000FF</default-background-color>
-  <default-frame-rate>30</default-frame-rate>
+  <default-frame-rate>50</default-frame-rate>
   <default-size>
     <width>600</width>
     <height>600</height>
