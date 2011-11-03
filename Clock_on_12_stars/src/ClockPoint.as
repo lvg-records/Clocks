@@ -36,15 +36,15 @@ package {
 			}
 		}
 		
-		public function onTime(time_hours:Number, time_minutes:Number, time_seconds:Number, mode:Boolean):void {
+		public function onTime(time_hours:Number, time_minutes:Number, time_seconds:Number, mode:Boolean, delay:Number):void {
 			trace(arguments);
 			
 			//mode = false;
 			//time_hours = 15;
 			//time_minutes = 33;
 			
-			var speed:Number = 0.4;
-			if (!mode) {
+			var speed:Number = (delay - delay * .1) / 2;
+			if (!mode){
 				light(time_hours % 12, -1, -1)
 				return;
 			}
