@@ -1,8 +1,6 @@
 package {
-	import caurina.transitions.Tweener;
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import flash.utils.Timer;
 	
 	/**
 	 * ...
@@ -28,10 +26,6 @@ package {
 			sprite.addChild(bk);
 			
 			var clock:Clock = new Clock(bk['place']);
-			
-			controlPanel = new ControlPanel(sprite, clock);
-			addChild(controlPanel);
 		}
-	
 	}
 }

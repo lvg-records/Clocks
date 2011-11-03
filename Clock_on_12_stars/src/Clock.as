@@ -42,14 +42,13 @@ package {
 		}
 		
 		private function onTime(e:TimerEvent = null):void {
-			//numOfOnTimeCall++;
-			//if (numOfOnTimeCall >= TIMER_SPEED * SWITCH_MINUTES_HOURS){
-				//mode = !mode;
-				//numOfOnTimeCall = 0;
-			//}
+			numOfOnTimeCall++;
+			if (numOfOnTimeCall >= TIMER_SPEED * SWITCH_MINUTES_HOURS){
+				mode = !mode;
+				numOfOnTimeCall = 0;
+			}
 			
 			var date:Date = new Date();
-			//var date:Date = new Date(null,null,null,17,31);
 			clockPoint.onTime(date.hours, date.minutes, date.seconds, mode);
 		}
 	}
