@@ -109,6 +109,7 @@ package {
 			}
 			
 			clockPoint.onTime(previewData[0], previewData[1], previewData[2], mode, timer.delay);
+			//clockPoint.onTime(previewData[0], 0, 10, mode, timer.delay);
 			updateTxtField(previewData[0], previewData[1], previewData[2]);
 		}
 		
