@@ -8,35 +8,33 @@
   <compiler>
     <define append="true">
       <name>CONFIG::debug</name>
-      <value>false</value>
-    </define>
-    <define append="true">
-      <name>CONFIG::release</name>
       <value>true</value>
     </define>
     <define append="true">
-      <name>CONFIG::timeStamp</name>
-      <value>'11/5/2011'</value>
+      <name>CONFIG::release</name>
+      <value>false</value>
     </define>
-    <optimize>true</optimize>
-    <omit-trace-statements>true</omit-trace-statements>
-    <verbose-stacktraces>false</verbose-stacktraces>
+    <define append="true">
+      <name>CONFIG::timeStamp</name>
+      <value>'11/1/2011'</value>
+    </define>
+    <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
-      <path-element>D:\My work space\GIT_REPOSITORY\Clocks\Clock_on_12_stars\src</path-element>
+      <path-element>D:\My work space\GIT_REPOSITORY\Clocks\Clock_on_five_sector_2\src</path-element>
       <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
     <library-path append="true">
-      <path-element>D:\My work space\GIT_REPOSITORY\Clocks\Clock_on_12_stars\lib\res.swc</path-element>
-      <path-element>D:\My work space\GIT_REPOSITORY\Clocks\Clock_on_12_stars\lib\tweener.swc</path-element>
+      <path-element>D:\My work space\GIT_REPOSITORY\Clocks\Clock_on_five_sector_2\lib\res.swc</path-element>
+      <path-element>D:\My work space\GIT_REPOSITORY\Clocks\Clock_on_five_sector_2\lib\tweener.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>
-    <path-element>D:\My work space\GIT_REPOSITORY\Clocks\Clock_on_12_stars\src\ClockOnTwelveStars.as</path-element>
+    <path-element>D:\My work space\GIT_REPOSITORY\Clocks\Clock_on_five_sector_2\src\ClockOnFivePoint.as</path-element>
   </file-specs>
-  <default-background-color>#000080</default-background-color>
+  <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>
   <default-size>
-    <width>600</width>
+    <width>1000</width>
     <height>600</height>
   </default-size>
 </flex-config>

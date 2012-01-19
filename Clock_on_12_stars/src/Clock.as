@@ -13,16 +13,16 @@ package {
 		
 		public static const NUMBER_OF_STAR:int = 12;
 		
-		public static const TIMER_SPEED:int = 1;
-		public static const PREVIEW_DELAY:int = 10;
-		public static const PREVIEW_SPEED:int = 4;
+		//public static const TIMER_SPEED:Number = 0.5;
+		public static const TIMER_SPEED:Number = 3;
+		public static const PREVIEW_DELAY:int = .05;
+		public static const PREVIEW_SPEED:int = 1;
 		public static var SWITCH_MINUTES_HOURS:int = 3;
 		
 		private var timer:Timer;
 		//false - minutes     true - hours
-		//private var mode:Boolean = false;
 		private var mode:Boolean = true;
-		private var numOfOnTimeCall:int;
+		private var numOfOnTimeCall:int = SWITCH_MINUTES_HOURS;
 		
 		private var clock_mode:int = 0;
 		
@@ -32,9 +32,9 @@ package {
 		private var clockPoint:ClockPoint;
 		private var content:Sprite;
 		
-		private var previewData:Array = [0,0,0];
+		private var previewData:Array = [0, 0, 0];
 		
-		public function Clock(content:Sprite,clock_mode:int = 0){
+		public function Clock(content:Sprite, clock_mode:int = 0){
 			this.content = content;
 			this.clock_mode = clock_mode;
 			for (var i:int = 0; i < NUMBER_OF_STAR; i++){
@@ -66,13 +66,13 @@ package {
 			
 			switch (_mode){
 				case CLOCK_MODE_REAL: 
-					timer = new Timer(1000/TIMER_SPEED);
+					timer = new Timer(1000 * TIMER_SPEED);
 					timer.addEventListener(TimerEvent.TIMER, onTime);
 					timer.start();
 					onTime();
 					break;
 				case CLOCK_MODE_PREVIEW: 
-					timer = new Timer(1000/PREVIEW_DELAY);
+					timer = new Timer(1000 * PREVIEW_DELAY);
 					timer.addEventListener(TimerEvent.TIMER, onTime);
 					timer.start();
 					onTime();
@@ -81,36 +81,34 @@ package {
 		}
 		
 		private function onTime(e:TimerEvent = null):void {
-			numOfOnTimeCall++;
-			if (numOfOnTimeCall >= TIMER_SPEED * SWITCH_MINUTES_HOURS){
+			//numOfOnTimeCall++;
+			//if (numOfOnTimeCall >= SWITCH_MINUTES_HOURS){
 				mode = !mode;
 				numOfOnTimeCall = 0;
-			}
-			
-			if (clock_mode == 0){
-				var date:Date = new Date();
-				previewData[0] = date.hours;
-				previewData[1] = date.minutes;
-				previewData[2] = date.seconds;
-			}
-			else {
-				previewData[2] += PREVIEW_SPEED;
-				if (previewData[2] >= 60){
-					previewData[1]++;
-					previewData[2] = 0;
+				
+				if (clock_mode == 0){
+					var date:Date = new Date();
+					previewData[0] = date.hours;
+					previewData[1] = date.minutes;
+					previewData[2] = date.seconds;
+				} else {
+					previewData[2] += PREVIEW_SPEED;
+					if (previewData[2] >= 60){
+						previewData[1]++;
+						previewData[2] = 0;
+					}
+					if (previewData[1] >= 60){
+						previewData[0]++;
+						previewData[1] = 0;
+					}
+					if (previewData[0] >= 24){
+						previewData[0] = 0
+					}
 				}
-				if (previewData[1] >= 60){
-					previewData[0]++;
-					previewData[1] = 0;
-				}
-				if (previewData[0] >= 24){
-					previewData[0] = 0
-				}
-			}
-			
-			clockPoint.onTime(previewData[0], previewData[1], previewData[2], mode, timer.delay);
-			//clockPoint.onTime(previewData[0], 0, 10, mode, timer.delay);
-			updateTxtField(previewData[0], previewData[1], previewData[2]);
+				
+				clockPoint.onTime(previewData[0], previewData[1], previewData[2], mode, timer.delay);
+				updateTxtField(previewData[0], previewData[1], previewData[2]);
+			//}
 		}
 		
 		private function updateTxtField(hours:int, minutes:int, seconds:int):void {

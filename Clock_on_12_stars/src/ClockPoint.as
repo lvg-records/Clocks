@@ -49,13 +49,14 @@ package {
 			
 			//var speed:Number = (delay - delay * .1) / 2000;
 			//var light_number:int = 2;
-			
-			
+			//time_minutes = 0;
+			//time_seconds = 40;
+			var d:Number = ((delay /*- delay * .1*/) / 2000);
 			var percent:Number = ((int(time_minutes % 5) * 60 + time_seconds)) / 300;
-			//trace(percent);
-			var light_number:int = (15 * percent + 2);
-			light_number =  (int(light_number / 2) == 0)?light_number:light_number - 1;
-			var speed:Number = .45/light_number;
+			var light_number:int = (d*10 * percent + 2);
+			//light_number = (int(light_number / 2) == 0) ? light_number : light_number - 1;
+			
+			var speed:Number = ( d/ light_number) ;
 			if (!mode){
 				light(time_hours % 12, -1, -1, -1)
 				return;
