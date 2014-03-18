@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>lvg-records.com.github</groupId>
+    <artifactId>super-pom</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <flexmojos.version>4.2-beta</flexmojos.version>
+        <flex.version>4.5.1.21328</flex.version>
+        <flashplayer.version>10.2</flashplayer.version>
+        <project.mainClass>${project.name}</project.mainClass>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <compile.debug>false</compile.debug>
+            </properties>
+        </profile>
+        <profile>
+            <id>debug</id>
+            <activation>
+                <property>
+                    <name>debug</name>
+                </property>
+            </activation>
+            <properties>
+                <compile.debug>true</compile.debug>
+            </properties>
+        </profile>
+    </profiles>
+
+
+    <dependencies>
+        <!-- Flex SDK -->
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>flex-framework</artifactId>
+            <version>${flex.version}</version>
+            <type>pom</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.adobe.flex.framework</groupId>
+                    <artifactId>playerglobal</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>playerglobal</artifactId>
+            <version>${flex.version}</version>
+            <classifier>${flashplayer.version}</classifier>
+            <type>swc</type>
+        </dependency>
+
+        <dependency>
+            <groupId>lvg-records.com.github</groupId>
+            <artifactId>tweener</artifactId>
+            <version>1.0.0</version>
+            <type>swc</type>
+        </dependency>
+
+    </dependencies>
+
+
+    <repositories>
+        <repository>
+            <id>flex-mojos-repository</id>
+            <name>flex-mojos-repository</name>
+            <url>http://repository.sonatype.org/content/groups/flexgroup/</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>flex-mojos-plugin-repository</id>
+            <url>http://repository.sonatype.org/content/groups/flexgroup</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <build>
+        <finalName>${project.name}</finalName>
+        <plugins>
+
+            <plugin>
+                <groupId>org.sonatype.flexmojos</groupId>
+                <artifactId>flexmojos-maven-plugin</artifactId>
+                <version>${flexmojos.version}</version>
+                <extensions>true</extensions>
+
+                <configuration>
+                    <storepass/>
+                    <targetPlayer>${flashplayer.version}</targetPlayer>
+                    <debug>${compile.debug}</debug>
+                    <sourceFile>${project.build.sourceDirectory}/${project.mainClass}.as</sourceFile>
+                    <defines>
+                        <property>
+                            <name>CONFIG::debug</name>
+                            <value>${compile.debug}</value>
+                        </property>
+                        <property>
+                            <name>CONFIG::versionNumber</name>
+                            <value>'${project.version}'</value>
+                        </property>
+                    </defines>
+                    <compilerWarnings>
+                        <warn-no-constructor>false</warn-no-constructor>
+                    </compilerWarnings>
+                </configuration>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>com.adobe.flex</groupId>
+                        <artifactId>compiler</artifactId>
+                        <version>${flex.version}</version>
+                        <type>pom</type>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

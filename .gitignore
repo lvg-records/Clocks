@@ -24,3 +24,5 @@ bin
 /Clock_on_five_point_without_center/obj
 /Clock_on_five_sectors/obj
 /Site_Clock/obj
+/.idea/
+*.iml
