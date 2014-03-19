@@ -3,9 +3,9 @@ package {
 	import flash.events.Event;
 
     [SWF(width=600,height=600)]
-	public class ClockOnTwelveStars_v2 extends Sprite {
+	public class ClockOnTwelveStars extends Sprite {
 
-		public function ClockOnTwelveStars_v2():void {
+		public function ClockOnTwelveStars():void {
 			if(stage) {
 				init();
 			} else {

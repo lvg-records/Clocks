@@ -11,6 +11,8 @@
 
     <modules>
         <module>Clock_on_6_pixels</module>
+        <module>Clock_on_12_stars</module>
+        <module>ClockOnTwelveStars_v2</module>
     </modules>
 
 
