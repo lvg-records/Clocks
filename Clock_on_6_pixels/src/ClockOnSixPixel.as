@@ -3,7 +3,7 @@ package {
 	import flash.events.Event;
 
 
-
+    [SWF(width=600,height=600)]
 	public class ClockOnSixPixel extends Sprite {
 
 		private var controlPanel:ControlPanel;

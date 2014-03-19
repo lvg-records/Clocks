@@ -63,7 +63,7 @@
 
         <dependency>
             <groupId>lvg-records.com.github</groupId>
-            <artifactId>tweener</artifactId>
+            <artifactId>tweener_swc</artifactId>
             <version>1.0.0</version>
             <type>swc</type>
         </dependency>

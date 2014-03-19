@@ -8,6 +8,7 @@
         <groupId>lvg-records.com.github</groupId>
         <artifactId>super-pom</artifactId>
         <version>1.0.0</version>
+        <relativePath>../super-pom/pom.xml</relativePath>
     </parent>
 
     <artifactId>Clock_on_6_pixels</artifactId>
@@ -44,7 +45,7 @@
                 <executions>
                     <execution>
                         <id>install-res</id>
-                        <phase>generate-resources</phase>
+                        <phase>clean</phase>
                         <goals>
                             <goal>install-file</goal>
                         </goals>
@@ -58,7 +59,7 @@
                     </execution>
                     <execution>
                         <id>install-cPanel</id>
-                        <phase>generate-resources</phase>
+                        <phase>clean</phase>
                         <goals>
                             <goal>install-file</goal>
                         </goals>

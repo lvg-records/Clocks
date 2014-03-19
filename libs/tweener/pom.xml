@@ -6,14 +6,6 @@
     <artifactId>tweener</artifactId>
     <version>1.0.0</version>
 
-    <properties>
-        <groupId>${project.groupId}</groupId>
-        <artifactId>${project.artifactId}</artifactId>
-        <version>${project.version}</version>
-        <packaging>swc</packaging>
-        <file>tweener.swc</file>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
@@ -28,6 +20,13 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <groupId>${project.groupId}</groupId>
+                    <artifactId>tweener_swc</artifactId>
+                    <version>${project.version}</version>
+                    <packaging>swc</packaging>
+                    <file>tweener.swc</file>
+                </configuration>
             </plugin>
         </plugins>
     </build>

@@ -1,5 +1,7 @@
 package {
-	import flash.display.Sprite;
+    import caurina.transitions.Tweener;
+
+    import flash.display.Sprite;
 	import flash.utils.setTimeout;
 
 
@@ -53,6 +55,7 @@ package {
 			}
 			//clock mode
 			if(speed < 0) {
+
 				Tweener.removeAllTweens();
 				Clock.arrPoints[activeClockPoint].point.alpha = 1;
 				if(activeClockPoint > light || (activeClockPoint == 0 && light == 5)) {
