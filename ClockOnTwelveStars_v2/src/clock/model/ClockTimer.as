@@ -1,4 +1,4 @@
-package {
+package clock.model {
 	import flash.events.EventDispatcher;
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;

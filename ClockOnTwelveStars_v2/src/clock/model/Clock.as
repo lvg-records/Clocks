@@ -1,11 +1,11 @@
-package {
+package clock.model {
+	import clock.view.ClockView;
+
 	import flash.display.Sprite;
 	import flash.events.TimerEvent;
 
-    import view.ClockView;
 
-
-    public class Clock {
+	public class Clock {
 
 		private var clockView:ClockView;
 		private var clockTimer:ClockTimer;
@@ -14,7 +14,7 @@ package {
 
 		}
 
-        public function init(content:Sprite):void {
+		public function init(content:Sprite):void {
 
 			clockView = new ClockView();
 			clockView.init(content);

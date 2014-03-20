@@ -1,10 +1,10 @@
-package view {
-	import flash.display.Sprite;
+package clock.view {
+	import clock.view.components.HoursView;
+	import clock.view.components.MinutesView;
+	import clock.view.components.SecondsView;
+	import clock.view.components.TextView;
 
-	import view.components.HoursView;
-	import view.components.MinutesView;
-	import view.components.SecondsView;
-	import view.components.TextView;
+	import flash.display.Sprite;
 
 
 	public class ClockView {

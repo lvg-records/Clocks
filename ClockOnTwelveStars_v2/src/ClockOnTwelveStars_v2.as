@@ -1,5 +1,7 @@
 package {
-	import flash.display.Sprite;
+    import clock.model.Clock;
+
+    import flash.display.Sprite;
 	import flash.events.Event;
 
 

@@ -1,4 +1,4 @@
-package view.components {
+package clock.view.components {
 	import flash.display.Sprite;
 
 
@@ -11,11 +11,12 @@ package view.components {
 		}
 
 		override protected function createStars():void {
-			super.createStars();
 
             txtTime = new TXT_time();
             txtTime.txt.text = "";
             content.addChild(txtTime);
+
+			super.createStars();
 
             for each(var star:mc_star in stars) {
                 star.alpha = 0.5;

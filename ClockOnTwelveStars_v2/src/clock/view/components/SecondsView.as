@@ -1,4 +1,4 @@
-package view.components {
+package clock.view.components {
     import flash.display.Sprite;
 
     public class SecondsView extends StarsView {

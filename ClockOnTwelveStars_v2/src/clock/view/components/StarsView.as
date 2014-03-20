@@ -1,4 +1,4 @@
-package view.components {
+package clock.view.components {
     import flash.display.Sprite;
 
     public class StarsView {
@@ -23,8 +23,7 @@ package view.components {
 				var star:mc_star = new mc_star();
 				_content.addChild(star);
 				star.rotation = 360 / NUMBER_OF_STAR * i;
-				star.star_red.rotation = -star.rotation;
-				star.star_yellow.rotation = -star.rotation;
+				star.hours_mc.rotation = -star.rotation;
 				stars.push(star);
 			}
 		}
