@@ -1,10 +1,17 @@
 package clock.view.components {
-    import flash.display.Sprite;
+	import flash.display.Sprite;
 
-    public class MinutesView extends StarsView {
+
+	public class MinutesView extends StarsView {
 
 		public function MinutesView(content:Sprite) {
 			super(content);
+		}
+
+		override protected function createStars():void {
+			super.createStars();
+
+			hideStarsExcept("minutes_mc");
 		}
 
 		override public function update(date:Date):void {

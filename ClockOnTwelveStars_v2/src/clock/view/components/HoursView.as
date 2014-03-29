@@ -8,6 +8,12 @@ package clock.view.components {
 			super(content);
 		}
 
+		override protected function createStars():void {
+			super.createStars();
+
+			hideStarsExcept("hours_mc");
+		}
+
 		override public function update(date:Date):void {
 			super.update(date);
 

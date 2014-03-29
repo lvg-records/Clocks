@@ -12,22 +12,20 @@ package clock.view.components {
 
 		override protected function createStars():void {
 
-            txtTime = new TXT_time();
-            txtTime.txt.text = "";
-            content.addChild(txtTime);
+			txtTime = new TXT_time();
+			txtTime.txt.text = "";
+			content.addChild(txtTime);
 
 			super.createStars();
 
-            for each(var star:mc_star in stars) {
-                star.alpha = 0.5;
-            }
+			hideStarsExcept("preview_mc");
 		}
 
 		override public function update(date:Date):void {
 			super.update(date);
 
 			txtTime.txt.text = date.hours + ":" + date.minutes + ":" + date.seconds;
-			trace(txtTime.txt.text);
+			//			trace(txtTime.txt.text);
 		}
 	}
 }

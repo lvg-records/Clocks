@@ -1,9 +1,11 @@
 package clock.view.components {
-    import flash.display.Sprite;
+	import flash.display.DisplayObject;
+	import flash.display.Sprite;
 
-    public class StarsView {
 
-        protected const NUMBER_OF_STAR:int = 12;
+	public class StarsView {
+
+		protected const NUMBER_OF_STAR:int = 12;
 
 		private var _content:Sprite;
 		protected var stars:Vector.<mc_star>;
@@ -23,7 +25,10 @@ package clock.view.components {
 				var star:mc_star = new mc_star();
 				_content.addChild(star);
 				star.rotation = 360 / NUMBER_OF_STAR * i;
-				star.hours_mc.rotation = -star.rotation;
+				for(var starChildIndex:int = 0; starChildIndex < star.numChildren; starChildIndex++) {
+					var child:DisplayObject = star.getChildAt(starChildIndex);
+					child.rotation = -star.rotation;
+				}
 				stars.push(star);
 			}
 		}
@@ -34,6 +39,17 @@ package clock.view.components {
 
 		public function get content():Sprite {
 			return _content;
+		}
+
+		protected function hideStarsExcept(starName:String):void {
+
+			for(var starIndex:int = 0; starIndex < stars.length; starIndex++) {
+				var star:mc_star = stars[starIndex];
+				for(var starChildIndex:int = 0; starChildIndex < star.numChildren; starChildIndex++) {
+					var child:DisplayObject = star.getChildAt(starChildIndex);
+					child.visible = child.name == starName;
+				}
+			}
 		}
 	}
 }
